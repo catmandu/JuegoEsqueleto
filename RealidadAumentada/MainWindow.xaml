@@ -25,7 +25,7 @@
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" HorizontalAlignment="Center" Name="lblMenu">MENU</Label>
+                <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Name="lblMenu">MENU</Label>
                 
                     <k:KinectTileButton Grid.Row="1" Background="Transparent" BorderBrush="Transparent" Name="btnJugar" Click="Jugar">
                     <Image  Source="img/jugar.png" Stretch="Fill" />
