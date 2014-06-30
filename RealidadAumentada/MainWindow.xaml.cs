@@ -351,6 +351,7 @@ namespace RealidadAumentada
 
             BitmapImage fondo = new BitmapImage(new Uri("img/evaluacion/tiempo.jpg", UriKind.Relative));
             imgEvaluacion.Source = fondo;
+            incorrectas++;
         }
 
         private void resultados()
