@@ -1,0 +1,98 @@
+﻿<Window x:Class="RealidadAumentada.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:k="http://schemas.microsoft.com/kinect/2013"
+        Title="MainWindow" Height="365" Width="500"
+        WindowStyle="None"
+        WindowState="Maximized">
+    <Grid>
+        <k:KinectRegion Name="kinectRegion">
+         <Grid><!--Grid general-->
+             
+                <!--Empieza grid de ventana principal-->
+                <Grid Name="gridPrincipal">
+                
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".5*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+                
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" HorizontalAlignment="Center" Name="lblMenu">MENU</Label>
+                
+                    <k:KinectTileButton Grid.Row="1" Background="Transparent" BorderBrush="Transparent" Name="btnJugar" Click="Jugar">
+                    <Image  Source="img/jugar.png" Stretch="Fill" />
+                </k:KinectTileButton>
+
+                    <k:KinectTileButton Grid.Row="2" Background="Transparent" BorderBrush="Transparent" Name="btnOpciones">
+                    <Image Source="img/opciones.png" Stretch="Fill"  />
+                </k:KinectTileButton>
+
+                    <k:KinectTileButton Grid.Row="3" Background="Transparent" BorderBrush="Transparent" Name="btnCreditos">
+                    <Image Source="img/creditos.png" Stretch="Fill"  />
+                </k:KinectTileButton>
+
+                    <k:KinectTileButton Grid.Row="4" Background="Transparent" BorderBrush="Transparent"  Name="btnSalir" Click="Salir">
+                    <Image Source="img/salir.png" Stretch="Fill"  />
+                </k:KinectTileButton>
+
+                    <Image Grid.Column="1" Grid.RowSpan="5" Source="img/esqueleto.gif" />
+                </Grid>
+
+                <!--Empieza grid de preguntas-->
+                <Grid Name="gridPreguntas" Visibility="Hidden">
+                   
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".25*"/>
+                        <ColumnDefinition Width=".25*"/>
+                        <ColumnDefinition Width=".5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".18*" />
+                        <RowDefinition Height=".18*" />
+                        <RowDefinition Height=".18*" />
+                        <RowDefinition Height=".18*" />
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.ColumnSpan="3" Grid.RowSpan="4" Source="img/libro.jpg" Stretch="Fill" />
+                    <Label Grid.Column="0" Grid.ColumnSpan="2" FontSize="25" Grid.Row="0" Name="contador" Content="Tiempo restante: 30" HorizontalAlignment="Center" VerticalAlignment="Bottom"  />
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Grid.Row="1" TextWrapping="Wrap" FontSize="25" Padding="120" Name="txtPregunta" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+                    
+                    <k:KinectTileButton Name="btn1"  HorizontalAlignment="Right" Grid.Column="0" Click="evaluacion" Grid.Row="2" Background="Transparent" BorderBrush="Transparent">
+                        <Image Name="img1" Stretch="Fill"  />
+                    </k:KinectTileButton>
+
+                    <k:KinectTileButton Name="btn2" HorizontalAlignment="Right" Grid.Column="1" Click="evaluacion" Grid.Row="2" Background="Transparent" BorderBrush="Transparent" >
+                        <Image Name="img2" Stretch="Fill"  />
+                    </k:KinectTileButton>
+
+                    <k:KinectTileButton Name="btn3" Grid.Column="0" HorizontalAlignment="Center" Click="evaluacion" Grid.ColumnSpan="2" Grid.Row="3" Background="Transparent" BorderBrush="Transparent">
+                        <Image Name="img3"  Stretch="Fill"  />
+                    </k:KinectTileButton>
+
+                </Grid>
+             
+                <!--Empieza grid de evaluacion-->
+            <Grid Name="gridEvaluacion" Visibility="Hidden">
+                    <Image Name="imgEvaluacion" Stretch="Fill"/> 
+                    <Label FontSize="25" Name="lblCorrectas"/>
+                    <Label FontSize="25" Name="lblIncorrectas"/>
+                    <k:KinectTileButton Name="btnSiguiente" VerticalAlignment="Bottom" Padding="0,0,50,50" HorizontalAlignment="Right" Background="Transparent" BorderBrush="Transparent">
+                        <Image Source="img/siguiente.png" Stretch="Fill" />
+                    </k:KinectTileButton>
+            </Grid>
+             
+            <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi"/>
+            <k:KinectUserViewer VerticalAlignment="Top" HorizontalAlignment="Center" k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" />
+            </Grid><!--Termina grid general-->
+        </k:KinectRegion>
+    </Grid>
+</Window>
